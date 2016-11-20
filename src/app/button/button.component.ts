@@ -4,4 +4,6 @@ import { Component } from '@angular/core';
     selector: 'app-button',
     templateUrl: './button.component.html'
 })
-export class ButtonComponent {}
+export class ButtonComponent {
+    public title: string= 'Button';
+}
