@@ -3,8 +3,12 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class SearchCharacter {
-    public search (name: string, serieCode: string, eventCode: string): SuperHero[]{
-        return [{
+    public name: string;
+    public serieCode: string;
+    public eventCode: string;
+
+    public search(name: string, serieCode: string, eventCode: string, page: number, size: number): SuperHero[] {
+        let result: SuperHero[] = [{
             id: 1,
             name: 'Spider-man',
             update: new Date(),
@@ -55,5 +59,13 @@ export class SearchCharacter {
             update: new Date(),
             wiki: 'Super hero wiki'
         }];
+
+        let firstElement: number = (page - 1) * size;
+
+        return result.slice(firstElement, size);
+    }
+
+    public changePage (page: number, size: number): SuperHero[]{
+        return this.search('', '', '', page, size);
     }
 }
