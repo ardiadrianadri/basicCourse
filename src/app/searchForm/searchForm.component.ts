@@ -51,10 +51,14 @@ export class SearchFormComponent implements OnInit {
                 this.page = 1;
                 break;
             case 'previos':
-                this.page --;
+                if (this.page > 1) {
+                    this.page --;
+                }
                 break;
             case 'next':
-                this.page ++;
+                if (this.page < this.tableContent.pages){
+                    this.page ++;
+                }
                 break;
             case 'last':
                 let lastPage = Math.floor(this.tableContent.total / this.size);
