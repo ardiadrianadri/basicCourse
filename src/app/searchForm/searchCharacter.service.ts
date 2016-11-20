@@ -62,9 +62,12 @@ export class SearchCharacter {
         }];
 
         let firstElement: number = (page - 1) * size;
+        let leng: number = heroes.length;
+        let numberElements: number = ((firstElement + size) > leng) ? (firstElement + size) - leng : size;
+
         let result: ResultSearch<SuperHero> = {
             total: heroes.length,
-            result: heroes.slice(firstElement, size)
+            result: heroes.slice(firstElement, numberElements)
         }
 
         return result;
