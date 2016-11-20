@@ -1,13 +1,37 @@
-import { Component } from '@angular/core';
+import { TableComponent } from './../table/table.component';
+import { SuperHero } from './superHero';
+import { SearchCharacter } from './searchCharacter.service';
+import { TableMetadata } from './../table/metadata';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-search',
     templateUrl: './searchForm.component.html'
 })
-export class SearchFormComponent {
-    public characterName: string;
-    public serieCode: string;
-    public eventCode: string;
+export class SearchFormComponent implements OnInit {
+    public characterName: string = 'Iron man';
+    public serieCode: string = '';
+    public eventCode: string = '';
+    public page: number = 1;
+    public size: number = 5;
+    public tableFormat: TableMetadata[] = [{
+        title: 'Name',
+        value: 'name'
+    }, {
+        title: 'Last update',
+        value: 'update'
+    }, {
+        title: 'Character wiki',
+        value: 'wiki'
+    }];
+
+    public tableContent: SuperHero[];
+
+    constructor (private _searchService: SearchCharacter) {}
+
+    ngOnInit () {
+        this.tableContent = this._searchService.search(this.characterName, this.serieCode, this.eventCode, this.page, this.size);
+    }
 
     private _pressOnReset () {
        this.characterName = '';
@@ -16,7 +40,15 @@ export class SearchFormComponent {
     }
 
     private _pressOnSearch () {
-        console.log('Button search has been pressed');
+        this.page = 1;
+        this.tableContent = this._searchService.search(this.characterName, this.serieCode, this.eventCode, this.page, this.size);
+    }
+
+    public changePage (action: string) {
+        switch (action) {
+            case 'first':
+                this.page = 1;
+        }
     }
 
     public buttonPressed(title){
