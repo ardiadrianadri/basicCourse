@@ -5,8 +5,14 @@ import { Component } from '@angular/core';
     templateUrl: './searchForm.component.html'
 })
 export class SearchFormComponent {
+    public characterName: string;
+    public serieCode: string;
+    public eventCode: string;
+
     private _pressOnReset () {
-        console.log('Button reset has been pressed');
+       this.characterName = '';
+       this.serieCode = '';
+       this.eventCode = '';
     }
 
     private _pressOnSearch () {

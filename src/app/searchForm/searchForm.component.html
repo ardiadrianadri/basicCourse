@@ -11,13 +11,13 @@
 </div>
 <div class="row">
     <div class="col-xs-4">
-        <input type="text" id="characterInput" class="form-control"/>
+        <input type="text" id="characterInput" class="form-control" [(ngModel)]="characterName"/>
     </div>
      <div class="col-xs-4">
-        <input type="text" id="serieInput" class="form-control"/>
+        <input type="text" id="serieInput" class="form-control" [(ngModel)]="serieCode"/>
     </div>
      <div class="col-xs-4">
-        <input type="text" id="envetInput" class="form-control"/>
+        <input type="text" id="envetInput" class="form-control" [(ngModel)]="eventCode"/>
     </div>
 </div>
 <div class="row">
@@ -29,5 +29,16 @@
     <div class="col-xs-offset-10 col-xs-2">
         <app-button [title]="'Reset'" [type]="'btn-default'" (pressButton)="buttonPressed($event)"></app-button>&nbsp;&nbsp;
         <app-button [title]="'Search'" [type]="'btn-primary'" (pressButton)="buttonPressed($event)"></app-button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-4">
+        <h3>{{characterName}}</h3>
+    </div>
+    <div class="col-xs-4">
+        <h3>{{serieCode}}</h3>
+    </div>
+    <div class="col-xs-4">
+        <h3>{{eventCode}}</h3>
     </div>
 </div>
