@@ -8,7 +8,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let item of content">
-                    <td **ngFor="let metadata of descriptionTable"> item[metadata.value]</td>
+                    <td *ngFor="let metadata of descriptionTable"> {{item[metadata.value]}}</td>
                 </tr>
             </tbody>
         </table>

@@ -31,14 +31,10 @@
         <app-button [title]="'Search'" [type]="'btn-primary'" (pressButton)="buttonPressed($event)"></app-button>
     </div>
 </div>
-<div class="row">
-    <div class="col-xs-4">
-        <h3>{{characterName}}</h3>
-    </div>
-    <div class="col-xs-4">
-        <h3>{{serieCode}}</h3>
-    </div>
-    <div class="col-xs-4">
-        <h3>{{eventCode}}</h3>
-    </div>
-</div>
+<app-table 
+ [descriptionTable]="tableFormat" 
+ [content]="tableContent.result" 
+ (firstPage)="changePage('first')"
+ (lastPage)="changePage('last')"
+ (nextPage)="changePage('next')"
+ (previusPage)="changePage('previos')"></app-table>

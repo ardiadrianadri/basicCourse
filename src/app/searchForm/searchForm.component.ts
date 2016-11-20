@@ -1,3 +1,4 @@
+import { ResultSearch } from './resultSearch';
 import { TableComponent } from './../table/table.component';
 import { SuperHero } from './superHero';
 import { SearchCharacter } from './searchCharacter.service';
@@ -25,7 +26,7 @@ export class SearchFormComponent implements OnInit {
         value: 'wiki'
     }];
 
-    public tableContent: SuperHero[];
+    public tableContent: ResultSearch<SuperHero>;
 
     constructor (private _searchService: SearchCharacter) {}
 
@@ -48,7 +49,20 @@ export class SearchFormComponent implements OnInit {
         switch (action) {
             case 'first':
                 this.page = 1;
+                break;
+            case 'previos':
+                this.page --;
+                break;
+            case 'next':
+                this.page ++;
+                break;
+            case 'last':
+                let lastPage = Math.floor(this.tableContent.total / this.size);
+                this.page = ((this.tableContent.total % this.size) === 0) ? lastPage : lastPage ++;
+                break;
         }
+
+        this.tableContent = this._searchService.search(this.characterName, this.serieCode, this.eventCode, this.page, this.size);
     }
 
     public buttonPressed(title){
