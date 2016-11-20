@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-xs-12">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th *ngFor="let metadata of descriptionTable">{{metadata.title}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of content">
+                    <td **ngFor="let metadata of descriptionTable"> item[metadata.value]</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-offset-4 col-xs-4">
+        <app-button [title]="'<<'" [type]="'btn-primary btn-xs'" (pressButton)="movePage($event)"></app-button>&nbsp;
+        <app-button [title]="'<'" [type]="'btn-primary btn-xs'" (pressButton)="movePage($event)"></app-button>&nbsp;
+        <app-button [title]="'>'" [type]="'btn-primary btn-xs'" (pressButton)="movePage($event)"></app-button>&nbsp;
+        <app-button [title]="'>>'" [type]="'btn-primary btn-xs'" (pressButton)="movePage($event)"></app-button>&nbsp;
+    </div>
+</div>
