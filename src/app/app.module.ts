@@ -1,3 +1,4 @@
+import { ButtonComponent } from './button/button.component';
 import { SearchFormComponent } from './searchForm/searchForm.component';
 import { TitleComponent } from './title/title.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -11,7 +12,8 @@ import { AppComponent } from './app.component';
   declarations: [
     AppComponent,
     TitleComponent,
-    SearchFormComponent
+    SearchFormComponent,
+    ButtonComponent
   ],
   imports: [
     BrowserModule,
