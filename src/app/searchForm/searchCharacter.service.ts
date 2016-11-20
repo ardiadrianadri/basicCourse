@@ -1,3 +1,4 @@
+import { ResultSearch } from './resultSearch';
 import { SuperHero } from './superHero';
 import { Injectable } from '@angular/core';
 
@@ -7,8 +8,8 @@ export class SearchCharacter {
     public serieCode: string;
     public eventCode: string;
 
-    public search(name: string, serieCode: string, eventCode: string, page: number, size: number): SuperHero[] {
-        let result: SuperHero[] = [{
+    public search(name: string, serieCode: string, eventCode: string, page: number, size: number): ResultSearch<SuperHero> {
+        let heroes: SuperHero[] = [{
             id: 1,
             name: 'Spider-man',
             update: new Date(),
@@ -61,11 +62,15 @@ export class SearchCharacter {
         }];
 
         let firstElement: number = (page - 1) * size;
+        let result: ResultSearch<SuperHero> = {
+            total: heroes.length,
+            result: heroes.slice(firstElement, size)
+        }
 
-        return result.slice(firstElement, size);
+        return result;
     }
 
-    public changePage (page: number, size: number): SuperHero[]{
+    public changePage (page: number, size: number): ResultSearch<SuperHero>{
         return this.search('', '', '', page, size);
     }
 }
