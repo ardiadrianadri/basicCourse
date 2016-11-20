@@ -27,6 +27,7 @@
 </div>
 <div class="row">
     <div class="col-xs-offset-10 col-xs-2">
-        <app-button [title]="'Reset'" [type]="'btn-default'"></app-button>&nbsp;&nbsp;<app-button [title]="'Search'" [type]="'btn-primary'"></app-button>
+        <app-button [title]="'Reset'" [type]="'btn-default'" (pressButton)="buttonPressed($event)"></app-button>&nbsp;&nbsp;
+        <app-button [title]="'Search'" [type]="'btn-primary'" (pressButton)="buttonPressed($event)"></app-button>
     </div>
 </div>
