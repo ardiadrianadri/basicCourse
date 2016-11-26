@@ -1,6 +1,6 @@
 {
-    "/serv":{
-        "target": "https://gateway.marvel.com:443",
+    "/v1":{
+        "target": "https://gateway.marvel.com",
         "secure": false
     }
 }

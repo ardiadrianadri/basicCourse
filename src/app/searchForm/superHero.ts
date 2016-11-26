@@ -1,6 +1,6 @@
 export interface SuperHero {
     id: number;
     name: string;
-    update: Date;
+    update: string;
     wiki: string;
 }

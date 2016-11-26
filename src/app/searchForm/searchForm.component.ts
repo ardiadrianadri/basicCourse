@@ -3,7 +3,7 @@ import { TableComponent } from './../table/table.component';
 import { SuperHero } from './superHero';
 import { SearchCharacter } from './searchCharacter.service';
 import { TableMetadata } from './../table/metadata';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
 
 @Component({
     selector: 'app-search',
@@ -31,7 +31,15 @@ export class SearchFormComponent implements OnInit {
     constructor (private _searchService: SearchCharacter) {}
 
     ngOnInit () {
-        this.tableContent = this._searchService.search(this.characterName, this.serieCode, this.eventCode, this.page, this.size);
+        this.tableContent = {
+            total: 0,
+            pages: 0,
+            result: []
+        };
+
+        this._searchService.search (this.page, this.size, this.characterName, this.serieCode, this.eventCode)
+        .then (data => { this.tableContent = data; })
+        .catch(error => { throw new Error (error); });
     }
 
     private _pressOnReset () {
@@ -42,7 +50,9 @@ export class SearchFormComponent implements OnInit {
 
     private _pressOnSearch () {
         this.page = 1;
-        this.tableContent = this._searchService.search(this.characterName, this.serieCode, this.eventCode, this.page, this.size);
+        this._searchService.search (this.page, this.size, this.characterName, this.serieCode, this.eventCode)
+        .then (data => { this.tableContent = data; })
+        .catch(error => { throw new Error (error); });
     }
 
     public changePage (action: string) {
@@ -66,7 +76,9 @@ export class SearchFormComponent implements OnInit {
                 break;
         }
 
-        this.tableContent = this._searchService.search(this.characterName, this.serieCode, this.eventCode, this.page, this.size);
+       this._searchService.search (this.page, this.size, this.characterName, this.serieCode, this.eventCode)
+        .then (data => { this.tableContent = data; })
+        .catch(error => { throw new Error (error); });
     }
 
     public buttonPressed(title){
