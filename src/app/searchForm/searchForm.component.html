@@ -15,7 +15,12 @@
 </div>
 <div class="row">
     <div class="col-xs-offset-10 col-xs-12">
-        <my-button [title]="titleReset" [type]="'btn-default'"></my-button>&nbsp;&nbsp;
-        <my-button [title]="titleSearch" [type]="'btn-primary'"></my-button>
+        <my-button [title]="titleReset" [type]="'btn-default'" (customClick)="doAction($event)" ></my-button>&nbsp;&nbsp;
+        <my-button [title]="titleSearch" [type]="'btn-primary'" (customClick)="doAction($event)" ></my-button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <h1>{{tempAttr}}</h1>
     </div>
 </div>

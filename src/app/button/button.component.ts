@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector:'my-button',
@@ -10,4 +10,11 @@ export class ButtonComponent {
 
     @Input()
     public type: string;
+
+    @Output()
+    public customClick = new EventEmitter();
+
+    clicked () {
+        this.customClick.emit(this.title);
+    }
 }
