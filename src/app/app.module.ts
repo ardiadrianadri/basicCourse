@@ -1,3 +1,6 @@
+import { ButtonComponent } from './button/button.component';
+import { SearchFormComponent } from './searchForm/searchForm.component';
+import { HeaderComponent } from './header/header.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -7,7 +10,10 @@ import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    SearchFormComponent,
+    ButtonComponent
   ],
   imports: [
     BrowserModule,

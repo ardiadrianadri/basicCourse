@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col-xs-12">
+        <label for="inputNameHero">Name superhero</label>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <input type="text" id="inputNameHero" class="form-control" [(ngModel)]="heroName"/>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        &nbsp;
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-offset-10 col-xs-2">
+        <my-button [title]="resetTitle" [type]="'btn-default'" (customClick)="doAnAction($event)"></my-button>&nbsp;&nbsp;
+        <my-button [title]="searchTitle" [type]="'btn-primary'" (customClick)="doAnAction($event)"></my-button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        &nbsp;
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <h1>{{heroName}}</h1>
+    </div>
+</div>
