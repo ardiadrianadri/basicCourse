@@ -8,6 +8,7 @@ export class SearchFormComponent {
     public titleReset: string = 'Reset';
     public titleSearch: string = 'Search';
     public heroName: string;
+    public tempAttr: string;
 
     doAction (buttonTitle) {
         this.tempAttr = buttonTitle;
