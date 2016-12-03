@@ -1,4 +1,5 @@
 import { SearchFormComponent } from './searchForm/searchForm.component';
+import { ButtonComponent } from './button/button.component';
 import { HeaderComponent } from './header/header.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -11,7 +12,8 @@ import { AppComponent } from './app.component';
   declarations: [
     AppComponent,
     HeaderComponent,
-    SearchFormComponent
+    SearchFormComponent,
+    ButtonComponent
   ],
   imports: [
     BrowserModule,
