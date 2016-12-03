@@ -5,6 +5,6 @@ import { Component, Input } from '@angular/core';
     templateUrl : './button.component.html'
 })
 export class ButtonComponent {
-    @Input('attr')
+    @Input()
     public title: string;
 }
