@@ -20,6 +20,8 @@ export class TableComponent {
         data: []
     };
 
+    public size: number = 5;
+
     @Output()
     public refreshTable = new EventEmitter();
 

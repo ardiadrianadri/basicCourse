@@ -20,8 +20,8 @@
         <my-button [title]="'<'" [type]="'btn-primary'" (customClick)="requestData ((tableObj.page - 1), size)" ></my-button>&nbsp;
         <select [(ngModel)]="size" (change)="requestData(1, size)">
             <option value="5" selected>5</option>
-            <option value="15" selected>15</option>
-            <option value="20" selected>20</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
         </select>&nbsp;
         <my-button [title]="'>'" [type]="'btn-primary'" (customClick)="requestData ((tableObj.page + 1), size)" ></my-button>
         <my-button [title]="'>>'" [type]="'btn-primary'" (customClick)="requestData (tableObj.totalPages, size)" ></my-button>
