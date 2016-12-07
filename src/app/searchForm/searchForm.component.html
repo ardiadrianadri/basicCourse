@@ -19,8 +19,4 @@
         <my-button [title]="titleSearch" [type]="'btn-primary'" (customClick)="doAction($event)" ></my-button>
     </div>
 </div>
-<div class="row">
-    <div class="col-xs-12">
-        <h1>{{heroName}}</h1>
-    </div>
-</div>
+<my-table [metadata]="metadataTable" [tableObj]="tableObj" (refreshTable)="updateTable($event)" ></my-table>

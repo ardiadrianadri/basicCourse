@@ -23,6 +23,8 @@ export class TableComponent {
     @Output()
     public refreshTable = new EventEmitter();
 
+    public size: number = 5;
+
     private _newSize (size) {
 
         if (size > this.tableObj.totalNumber) {

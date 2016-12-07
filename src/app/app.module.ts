@@ -1,3 +1,4 @@
+import { TableComponent } from './table/table.component';
 import { SearchFormComponent } from './searchForm/searchForm.component';
 import { ButtonComponent } from './button/button.component';
 import { HeaderComponent } from './header/header.component';
@@ -7,20 +8,24 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { SearchService } from './searchForm/search.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     SearchFormComponent,
-    ButtonComponent
+    ButtonComponent,
+    TableComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [
+    SearchService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
