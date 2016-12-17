@@ -19,4 +19,9 @@
         <my-button [title]="titleSearch" [type]="'btn-primary'" (customClick)="doAction($event)" ></my-button>
     </div>
 </div>
-<my-table [metadata]="metadataTable" [tableObj]="tableObj" (refreshTable)="updateTable($event)" ></my-table>
+<div class="row">
+    <div class="col-xs-12">
+        <img src="assets/loader.gif" [hidden]="!loading" class="load">
+        <my-table [metadata]="metadataTable" [tableObj]="tableObj" (refreshTable)="updateTable($event)" ></my-table>
+    </div>
+</div>

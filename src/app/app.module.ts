@@ -9,6 +9,7 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { SearchService } from './searchForm/search.service';
+import { AuthService } from './common/auth.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { SearchService } from './searchForm/search.service';
     HttpModule
   ],
   providers: [
-    SearchService
+    SearchService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

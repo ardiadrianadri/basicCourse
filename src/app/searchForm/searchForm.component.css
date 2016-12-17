@@ -1,0 +1,7 @@
+img.load {
+    width: 30%;
+    z-index: 99999999;
+    float: inherit;
+    position: absolute;
+    margin-left: 30%;
+}

@@ -6,7 +6,8 @@ import { SearchService } from './search.service';
 
 @Component({
     selector: 'my-form',
-    templateUrl : './searchForm.component.html'
+    templateUrl: './searchForm.component.html',
+    styleUrls: ['./searchForm.component.css']
 })
 export class SearchFormComponent implements OnInit {
     public titleReset: string = 'Reset';
@@ -15,11 +16,26 @@ export class SearchFormComponent implements OnInit {
     public tempAttr: string;
     public metadataTable: IMetadata[];
     public tableObj: ITable<ISuperHero>;
+    public loading: boolean = false;
+
     private _lastSize: number = 5;
 
-    constructor (private _searchService: SearchService) {}
+    constructor(private _searchService: SearchService) { }
 
-    ngOnInit () {
+    private _launchSearch(name: string, page: number, size: number) {
+
+        this.loading = true;
+        this._searchService.searchSuperHero(name, page, size)
+            .subscribe(
+            data => { 
+                this.tableObj = data;
+                this.loading = false;
+            },
+            error => { console.error(`Error: ${JSON.stringify(error)}`); }
+            );
+    }
+
+    ngOnInit() {
         this.metadataTable = this._searchService.metadata;
         this.tableObj = {
             totalNumber: 0,
@@ -30,18 +46,18 @@ export class SearchFormComponent implements OnInit {
         };
     }
 
-    updateTable (pageSize) {
+    updateTable(pageSize) {
         this._lastSize = pageSize.size;
-        this.tableObj = this._searchService.searchSuperHero(this.heroName, pageSize.page, pageSize.size);
+        this._launchSearch(this.heroName, pageSize.page, pageSize.size);
     }
 
-    doAction (buttonTitle) {
+    doAction(buttonTitle) {
         switch (buttonTitle) {
             case this.titleReset:
                 this.heroName = '';
                 break;
             case this.titleSearch:
-                this.tableObj = this._searchService.searchSuperHero(this.heroName, 1, (this._lastSize) ? this._lastSize : 5);
+                this._launchSearch(this.heroName, 1, (this._lastSize) ? this._lastSize : 5);
                 break;
         }
     }
