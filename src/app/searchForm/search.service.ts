@@ -8,8 +8,8 @@ import { Http } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/throw';
-import 'rxjs/add/operatro/map';
-import 'rxjs/add/operatro/catch';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class SearchService {
@@ -117,5 +117,10 @@ export class SearchService {
         url = url + `?limit=${size}&offset=${offset}`;
         url = url + `&ts=${authOth.ts}&apikey=${authOth.apiKey}&hash=${authOth.hash}`;
         url = url + `&nameStartWith=${name}`;
+
+        return this._http.get(url)
+        .map( response => {
+            let responseObj = response.json();
+        })
     }
 }
