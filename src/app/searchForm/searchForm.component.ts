@@ -6,7 +6,7 @@ import { SearchService } from './search.service';
 
 @Component({
     selector: 'my-form',
-    templateUrl : './searchForm.component.html'
+    templateUrl: './searchForm.component.html'
 })
 export class SearchFormComponent implements OnInit {
     public titleReset: string = 'Reset';
@@ -17,9 +17,9 @@ export class SearchFormComponent implements OnInit {
     public tableObj: ITable<ISuperHero>;
     private _lastSize: number = 5;
 
-    constructor (private _searchService: SearchService) {}
+    constructor(private _searchService: SearchService) { }
 
-    ngOnInit () {
+    ngOnInit() {
         this.metadataTable = this._searchService.metadata;
         this.tableObj = {
             totalNumber: 0,
@@ -30,18 +30,34 @@ export class SearchFormComponent implements OnInit {
         };
     }
 
-    updateTable (pageSize) {
+    updateTable(pageSize) {
         this._lastSize = pageSize.size;
-        this.tableObj = this._searchService.searchSuperHero(this.heroName, pageSize.page, pageSize.size);
+        this._searchService.searchSuperHero(this.heroName, pageSize.page, pageSize.size)
+            .subscribe(
+                data => {
+                    this.tableObj = data;
+                },
+                error => {
+                    console.error(JSON.stringify(error));
+                }
+            );
     }
 
-    doAction (buttonTitle) {
+    doAction(buttonTitle) {
         switch (buttonTitle) {
             case this.titleReset:
                 this.heroName = '';
                 break;
             case this.titleSearch:
-                this.tableObj = this._searchService.searchSuperHero(this.heroName, 1, (this._lastSize) ? this._lastSize : 5);
+                this._searchService.searchSuperHero(this.heroName, 1, (this._lastSize) ? this._lastSize : 5)
+                    .subscribe(
+                        data => {
+                            this.tableObj = data;
+                        },
+                        error => {
+                            console.error(JSON.stringify(error));
+                        }
+                    );
                 break;
         }
     }
