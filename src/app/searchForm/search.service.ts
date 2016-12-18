@@ -45,7 +45,7 @@ export class SearchService {
 
         url = url + `?limit=${size}&offset=${offset}`;
         url = url + `&ts=${authOth.ts}&apikey=${authOth.apiKey}&hash=${authOth.hash}`;
-        url = url + `&nameStartWith=${name}`;
+        url = url + `&nameStartsWith=${name}`;
 
         return this._http.get(url)
         .map( response => {

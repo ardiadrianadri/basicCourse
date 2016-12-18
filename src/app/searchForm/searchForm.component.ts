@@ -6,7 +6,8 @@ import { SearchService } from './search.service';
 
 @Component({
     selector: 'my-form',
-    templateUrl: './searchForm.component.html'
+    templateUrl: './searchForm.component.html',
+    styleUrls: ['./searchForm.component.css']
 })
 export class SearchFormComponent implements OnInit {
     public titleReset: string = 'Reset';
@@ -16,6 +17,8 @@ export class SearchFormComponent implements OnInit {
     public metadataTable: IMetadata[];
     public tableObj: ITable<ISuperHero>;
     private _lastSize: number = 5;
+
+    public loading: boolean = false;
 
     constructor(private _searchService: SearchService) { }
 
@@ -32,12 +35,15 @@ export class SearchFormComponent implements OnInit {
 
     updateTable(pageSize) {
         this._lastSize = pageSize.size;
+        this.loading = true;
         this._searchService.searchSuperHero(this.heroName, pageSize.page, pageSize.size)
             .subscribe(
                 data => {
                     this.tableObj = data;
+                    this.loading = false;
                 },
                 error => {
+                    this.loading = false;
                     console.error(JSON.stringify(error));
                 }
             );
@@ -49,12 +55,15 @@ export class SearchFormComponent implements OnInit {
                 this.heroName = '';
                 break;
             case this.titleSearch:
+                this.loading = true;
                 this._searchService.searchSuperHero(this.heroName, 1, (this._lastSize) ? this._lastSize : 5)
                     .subscribe(
                         data => {
                             this.tableObj = data;
+                            this.loading = false;
                         },
                         error => {
+                            this.loading = false;
                             console.error(JSON.stringify(error));
                         }
                     );
