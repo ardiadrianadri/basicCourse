@@ -121,6 +121,17 @@ export class SearchService {
         return this._http.get(url)
         .map( response => {
             let responseObj = response.json();
+            let tableObj: ITable<ISuperHero> = {
+                totalNumber: responseObj.data.total,
+                page: page,
+                size: size,
+                totalPages: 0,
+                data: null
+            };
+
+            let totalPages = Math.floor( tableObj.totalNumber / size );
+            tableObj.totalPages = ((tableObj.totalNumber % size) !== 0) ? ++totalPages : totalPages;
+            return tableObj;
         })
     }
 }
