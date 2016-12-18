@@ -3,6 +3,14 @@ import { Injectable } from '@angular/core';
 import { IMetadata } from '../table/metadataDefinition';
 import { ISuperHero } from './superhero';
 
+import { AuthService } from '../common/auth.service';
+import { Http } from '@angular/http';
+
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/throw';
+import 'rxjs/add/operatro/map';
+import 'rxjs/add/operatro/catch';
+
 @Injectable()
 export class SearchService {
 
@@ -98,25 +106,16 @@ export class SearchService {
         events: 110,
     }];
 
-    public searchSuperHero (name: string, page: number, size: number): ITable<ISuperHero> {
-        let tableObj: ITable<ISuperHero> = {
-            totalNumber: 0,
-            page: 0,
-            totalPages: 0,
-            size: 0,
-            data: null
-        };
+    constructor (private _authService: AuthService, private _http: Http) {}
 
-        tableObj.totalNumber = this.lastResult.length;
-        tableObj.page = page;
-        let totalPages = Math.floor(tableObj.totalNumber / size);
-        tableObj.totalPages = ((tableObj.totalNumber % size) === 0) ? totalPages : ++ totalPages;
-        tableObj.size = size;
+    public searchSuperHero (name: string, page: number, size: number): Observable<ITable<ISuperHero>> {
 
-        let start = (page - 1) * size;
-        let end = start + size;
-        tableObj.data = this.lastResult.slice(start, end);
+        let  url = 'v1/public/characters';
+        let offset = ( page - 1 ) * size;
+        let authOth = this._authService.getAuthQuery();
 
-        return tableObj;
+        url = url + `?limit=${size}&offset=${offset}`;
+        url = url + `&ts=${authOth.ts}&apikey=${authOth.apiKey}&hash=${authOth.hash}`;
+        url = url + `&nameStartWith=${name}`;
     }
 }
