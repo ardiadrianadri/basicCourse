@@ -20,6 +20,9 @@ export class TableComponent {
         data: []
     };
 
+    @Input()
+    public dateLocaleFormat: string = 'eu';
+
     @Output()
     public refreshTable = new EventEmitter();
 
@@ -42,7 +45,7 @@ export class TableComponent {
     }
 
 
-    requestData ( page, size ){
+    requestData ( page, size ) {
 
         if (size !== this.tableObj.size) {
             this._newSize(size);

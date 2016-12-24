@@ -10,6 +10,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { SearchService } from './searchForm/search.service';
 import { AuthService } from './common/auth.service';
+import { DatePipe } from './common/date.pipe';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { AuthService } from './common/auth.service';
     HeaderComponent,
     SearchFormComponent,
     ButtonComponent,
-    TableComponent
+    TableComponent,
+    DatePipe
   ],
   imports: [
     BrowserModule,
