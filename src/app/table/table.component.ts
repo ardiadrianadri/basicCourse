@@ -4,7 +4,8 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'my-table',
-    templateUrl: './table.component.html'
+    templateUrl: './table.component.html',
+    styleUrls: ['./table.component.css']
 })
 export class TableComponent {
 

@@ -1,0 +1,16 @@
+<div class="row">
+    <div class="col-xs-12">
+        <my-superheroFile [superHero]="details.file" ></my-superheroFile>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-4">
+        <my-comics [name]="details.file.name" [characterId]="id"></my-comics>
+    </div>
+    <div class="col-xs-4">
+       <my-series [name]="details.file.name" [characterId]="id"></my-series>
+    </div>
+    <div class="col-xs-4">
+        <my-marvelEvents [name]="details.file.name" [characterId]="id"></my-marvelEvents>
+    </div>
+</div>

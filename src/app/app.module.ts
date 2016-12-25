@@ -11,6 +11,15 @@ import { AppComponent } from './app.component';
 import { SearchService } from './searchForm/search.service';
 import { AuthService } from './common/auth.service';
 import { DatePipe } from './common/date.pipe';
+import { SuperHeroFileComponent } from './superHeroFile/superHeroFile.component';
+import { DetailsComponent } from './details/details.component';
+import { DetailsService } from './details/details.service';
+import { ComicsService } from './comics/comics.service';
+import { ComicsComponent } from './comics/comics.component';
+import { SeriesService } from './series/series.service';
+import { SerieComponent } from './series/series.component';
+import { EventsService } from './events/events.service';
+import { EventsComponent } from './events/events.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +28,12 @@ import { DatePipe } from './common/date.pipe';
     SearchFormComponent,
     ButtonComponent,
     TableComponent,
-    DatePipe
+    DatePipe,
+    SuperHeroFileComponent,
+    DetailsComponent,
+    ComicsComponent,
+    SerieComponent,
+    EventsComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +42,11 @@ import { DatePipe } from './common/date.pipe';
   ],
   providers: [
     SearchService,
-    AuthService
+    AuthService,
+    DetailsService,
+    ComicsService,
+    SeriesService,
+    EventsService
   ],
   bootstrap: [AppComponent]
 })

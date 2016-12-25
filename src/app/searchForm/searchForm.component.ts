@@ -6,8 +6,7 @@ import { SearchService } from './search.service';
 
 @Component({
     selector: 'my-form',
-    templateUrl: './searchForm.component.html',
-    styleUrls: ['./searchForm.component.css']
+    templateUrl: './searchForm.component.html'
 })
 export class SearchFormComponent implements OnInit {
     public titleReset: string = 'Reset';

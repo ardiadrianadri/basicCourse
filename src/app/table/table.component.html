@@ -22,7 +22,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-xs-offset-4 col-xs-4">
+    <div class="col-xs-12 buttons-center">
         <my-button [title]="'<<'" [type]="'btn-primary'" (customClick)="requestData(1, size)" ></my-button>
         <my-button [title]="'<'" [type]="'btn-primary'" (customClick)="requestData ((tableObj.page - 1), size)" ></my-button>&nbsp;
         <select [(ngModel)]="size" (change)="requestData(1, size)">
