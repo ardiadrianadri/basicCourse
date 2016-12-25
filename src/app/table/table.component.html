@@ -10,7 +10,7 @@
                 <tr *ngFor="let item of tableObj.data" >
                     <td *ngFor="let column of metadata" > 
                         <div *ngIf="column.header.indexOf('date') >= 0" >
-                            {{item[column.key] | dateformat : 'us'}}
+                            {{item[column.key] | dateformat : dateLocaleFormat}}
                         </div>
                          <div *ngIf="column.header.indexOf('date') < 0" >
                             {{item[column.key]}}

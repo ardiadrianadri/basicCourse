@@ -20,6 +20,9 @@ export class TableComponent {
         data: []
     };
 
+    @Input()
+    public dateLocaleFormat: string = 'eu';
+
     @Output()
     public refreshTable = new EventEmitter();
 

@@ -16,6 +16,7 @@ export class SearchFormComponent implements OnInit {
     public tempAttr: string;
     public metadataTable: IMetadata[];
     public tableObj: ITable<ISuperHero>;
+    public formatDate: string= 'us';
     private _lastSize: number = 5;
 
     public loading: boolean = false;
