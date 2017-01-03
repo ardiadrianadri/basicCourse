@@ -20,6 +20,7 @@ import { SeriesService } from './series/series.service';
 import { SerieComponent } from './series/series.component';
 import { EventsService } from './events/events.service';
 import { EventsComponent } from './events/events.component';
+import { routing } from './app.router';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { EventsComponent } from './events/events.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    routing
   ],
   providers: [
     SearchService,
