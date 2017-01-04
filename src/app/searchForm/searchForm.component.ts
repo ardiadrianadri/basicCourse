@@ -3,6 +3,7 @@ import { ITable } from './../table/tableDefinition';
 import { IMetadata } from './../table/metadataDefinition';
 import { Component, OnInit } from '@angular/core';
 import { SearchService } from './search.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'my-form',
@@ -20,7 +21,7 @@ export class SearchFormComponent implements OnInit {
 
     public loading: boolean = false;
 
-    constructor(private _searchService: SearchService) { }
+    constructor(private _searchService: SearchService, private _router: Router) { }
 
     ngOnInit() {
         this.metadataTable = this._searchService.metadata;
@@ -72,6 +73,6 @@ export class SearchFormComponent implements OnInit {
     }
 
     goDetail(){
-        console.log('A super hero has been selected');
+        this._router.navigate(['/details']);
     }
 }
