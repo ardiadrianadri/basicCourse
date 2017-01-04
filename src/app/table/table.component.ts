@@ -27,6 +27,9 @@ export class TableComponent {
     @Output()
     public refreshTable = new EventEmitter();
 
+    @Output()
+    public onSelection = new EventEmitter();
+
     public size: number = 5;
 
     private _newSize (size) {
@@ -59,6 +62,10 @@ export class TableComponent {
         }
 
         this.refreshTable.emit({page: page, size: size});
+    }
+
+    rowSelected(){
+        this.onSelection.emit();
     }
 
 }

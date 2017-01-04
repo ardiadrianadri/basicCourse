@@ -70,4 +70,8 @@ export class SearchFormComponent implements OnInit {
                 break;
         }
     }
+
+    goDetail(){
+        console.log('A super hero has been selected');
+    }
 }
