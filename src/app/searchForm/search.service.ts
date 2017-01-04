@@ -16,7 +16,8 @@ export class SearchService {
 
     public metadata: IMetadata[] = [{
         header: 'Superhero name',
-        key: 'name'
+        key: 'name',
+        clickable: true
     }, {
         header: 'Last update',
         key: 'update'

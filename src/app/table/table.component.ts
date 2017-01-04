@@ -64,8 +64,10 @@ export class TableComponent {
         this.refreshTable.emit({page: page, size: size});
     }
 
-    rowSelected(){
-        this.onSelection.emit();
+    rowSelected( clickable?: boolean) {
+        if (clickable) {
+            this.onSelection.emit();
+        }
     }
 
 }
