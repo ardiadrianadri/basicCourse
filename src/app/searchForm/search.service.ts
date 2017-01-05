@@ -17,7 +17,7 @@ export class SearchService {
     public metadata: IMetadata[] = [{
         header: 'Superhero name',
         key: 'name',
-        clickable: true
+        clickable: 'id'
     }, {
         header: 'Last update',
         key: 'update'
@@ -63,6 +63,7 @@ export class SearchService {
             tableObj.totalPages = ((tableObj.totalNumber % size) !== 0) ? ++totalPages : totalPages;
             tableObj.data = responseObj.data.results.map( element => {
                 let superhero: ISuperHero = {
+                    id: element.id,
                     name: element.name,
                     update: element.modified,
                     comics: element.comics.available,

@@ -72,7 +72,7 @@ export class SearchFormComponent implements OnInit {
         }
     }
 
-    goDetail(){
-        this._router.navigate(['/details']);
+    goDetail(id){
+        this._router.navigate(['/details', id]);
     }
 }

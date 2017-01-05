@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DetailsService } from './details.service';
 import { IDetails } from './detailsDefinition';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'my-details',
@@ -18,9 +19,10 @@ export class DetailsComponent implements OnInit {
 
     public id: string = '1009368';
 
-    constructor ( private service: DetailsService ) {}
+    constructor ( private service: DetailsService, private _route:ActivatedRoute ) {}
 
     ngOnInit () {
+        this.id = this._route.snapshot.params['id'];
         this.service.getDetails(this.id)
         .subscribe(
             data => {

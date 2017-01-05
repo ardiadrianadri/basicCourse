@@ -7,5 +7,5 @@ import { DetailsComponent } from './details/details.component';
 export const routing: ModuleWithProviders = RouterModule.forRoot([
     { path: '', component: SearchFormComponent },
     { path: 'search', component: SearchFormComponent },
-    { path: 'details', component: DetailsComponent }
+    { path: 'details/:id', component: DetailsComponent }
 ]);
